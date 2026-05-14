@@ -39,7 +39,23 @@ function Navbar(props) {
             <li className="nav-item">
               <Link className="nav-link nav-pill" to="/blog">Blog</Link>
             </li>
+            
+            <li className="nav-item">
+            <Link className="nav-link nav-pill" to="/products">Products</Link>
+            </li>
 
+            <li className="nav-item ms-2">
+            <Link to="/dashboard" className="nav-pill nav-link" style={{color:'white'}}>Dashboard</Link>
+          </li>
+           
+           <li className="nav-item ms-2">
+            <Link to="/vendor-dashboard" className="nav-pill nav-link" style={{color:'white'}}>Vendor</Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link nav-pill" to="/analytics">Analytics</Link>
+          </li>
+          
             <li className="nav-item ms-2">
               <Link to="/login" className="nav-login-btn">Login</Link>
             </li>

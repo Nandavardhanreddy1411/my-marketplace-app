@@ -1,7 +1,7 @@
 function Blog() {
   return (
     <section style={{
-      background:'linear-gradient(135deg, #f0fdf4, #dcfce7)',
+      background:'linear-gradient(135deg, #FFFFFF, #FFFFFF)',
       padding:'80px 0',
       minHeight:'100vh',
       width:'100%'

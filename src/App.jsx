@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -16,10 +17,18 @@ import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
+import Dashboard from "./pages/Dashboard";
+import ForgotPassword from "./pages/ForgotPassword";
+import OTPVerification from "./pages/OTPVerification";
+import EmailVerification from "./pages/EmailVerification";
+import VendorDashboard from "./pages/VendorDashboard";
+import Analytics from "./pages/Analytics";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Navbar logo="PIXER" />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -34,8 +43,27 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product-details" element={<ProductDetails />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/otp-verification" element={<OTPVerification />} />
+        <Route path="/email-verification" element={<EmailVerification />} />
+        <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Routes>
       <Footer company="Pixer Marketplace" />
+
+      {/* Toast Notifications */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+      />
+
     </BrowserRouter>
   );
 }

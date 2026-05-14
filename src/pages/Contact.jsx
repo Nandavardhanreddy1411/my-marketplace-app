@@ -1,7 +1,7 @@
 function Contact() {
   return (
     <section style={{
-      background:'linear-gradient(135deg, #fff7ed, #fef3c7)',
+      background:'linear-gradient(135deg, #FFFFFF, #FFFFFF)',
       padding:'80px 0',
       minHeight:'100vh',
       width:'100%'
@@ -40,13 +40,13 @@ function Contact() {
 
             <input type="text" placeholder="Enter Name" style={{
               width:'100%', padding:'14px', marginBottom:'15px',
-              border:'1.5px solid #e2e8f0', borderRadius:'10px',
+              border:'1.5px solid #F8FAFC', borderRadius:'10px',
               fontFamily:'Poppins', fontSize:'0.95rem', outline:'none'
             }} />
 
             <input type="email" placeholder="Enter Email" style={{
               width:'100%', padding:'14px', marginBottom:'15px',
-              border:'1.5px solid #e2e8f0', borderRadius:'10px',
+              border:'1.5px solid #F8FAFC', borderRadius:'10px',
               fontFamily:'Poppins', fontSize:'0.95rem', outline:'none'
             }} />
 

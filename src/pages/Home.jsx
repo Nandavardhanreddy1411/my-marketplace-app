@@ -1,9 +1,9 @@
 function Home() {
 
   const products = [
-    { title: "React Admin Dashboard", price: "$25", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6" },
-    { title: "Modern UI Kit", price: "$18", image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3" },
-    { title: "Source Code Bundle", price: "$40", image: "https://images.unsplash.com/photo-1518770660439-4636190af475" }
+    { title: "React Admin Dashboard", price: "₹2,099", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6" },
+    { title: "Modern UI Kit", price: "₹1,499", image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3" },
+    { title: "Source Code Bundle", price: "₹4,099", image: "https://images.unsplash.com/photo-1518770660439-4636190af475" }
   ];
 
   return (
@@ -111,7 +111,7 @@ function Home() {
             <div className="col-md-4">
               <div className="pricing-card">
                 <h3>Starter</h3>
-                <h2>$19</h2>
+                <h2 className="price">₹1800</h2>
                 <p>Basic marketplace access</p>
                 <button className="buy-btn">Choose Plan</button>
               </div>
@@ -119,7 +119,7 @@ function Home() {
             <div className="col-md-4">
               <div className="pricing-card active-plan">
                 <h3>Professional</h3>
-                <h2>$49</h2>
+                <h2>₹3000</h2>
                 <p>Advanced vendor features</p>
                 <button className="buy-btn">Choose Plan</button>
               </div>
@@ -127,7 +127,7 @@ function Home() {
             <div className="col-md-4">
               <div className="pricing-card">
                 <h3>Enterprise</h3>
-                <h2>$99</h2>
+                <h2 className="price">₹4500</h2>
                 <p>Complete marketplace solution</p>
                 <button className="buy-btn">Choose Plan</button>
               </div>

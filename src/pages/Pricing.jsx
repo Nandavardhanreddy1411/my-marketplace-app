@@ -35,7 +35,7 @@ function Pricing() {
                 Starter
               </h2>
               <h3 style={{color:'#4F46E5', fontSize:'3rem', fontWeight:'700', marginBottom:'10px'}}>
-                $19
+                ₹1800
               </h3>
               <p style={{color:'#666', marginBottom:'25px'}}>Perfect for beginners</p>
               <ul style={{listStyle:'none', padding:0, marginBottom:'30px'}}>
@@ -78,7 +78,7 @@ function Pricing() {
                 Professional
               </h2>
               <h3 style={{color:'white', fontSize:'3rem', fontWeight:'700', marginBottom:'10px'}}>
-                $49
+                ₹3000
               </h3>
               <p style={{color:'rgba(255,255,255,0.8)', marginBottom:'25px'}}>Best for growing vendors</p>
               <ul style={{listStyle:'none', padding:0, marginBottom:'30px'}}>
@@ -113,7 +113,7 @@ function Pricing() {
                 Enterprise
               </h2>
               <h3 style={{color:'#4F46E5', fontSize:'3rem', fontWeight:'700', marginBottom:'10px'}}>
-                $99
+                ₹4500
               </h3>
               <p style={{color:'#666', marginBottom:'25px'}}>For large digital agencies</p>
               <ul style={{listStyle:'none', padding:0, marginBottom:'30px'}}>

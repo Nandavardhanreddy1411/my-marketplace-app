@@ -13,6 +13,13 @@
   width: 100% !important;
   max-width: 100% !important;
   overflow-x: hidden;
+   background-color: #F8FAFC;  /* ← SRS correct color */
+}
+.page-section {
+  padding: 100px 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #F8FAFC;  /* ← SRS correct color */
 }
 /* html, body, #root {
   margin: 0;
@@ -274,6 +281,11 @@ body {
 
 .pricing-card li {
   margin: 15px 0;
+}
+.price{
+    color: #4F46E5;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .pricing-card button {
@@ -570,4 +582,134 @@ body {
   padding: 100px 0;
   min-height: 100vh;
   width: 100%;
+}
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Navbar Mobile */
+@media (max-width: 768px) {
+  .pixer-navbar {
+    padding: 12px 15px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .navbar-search input {
+    width: 130px !important;
+  }
+
+  .nav-login-btn,
+  .nav-register-btn {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Hero Section Mobile */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0 !important;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 28px !important;
+  }
+
+  .hero-text {
+    font-size: 15px !important;
+  }
+
+  .hero-btn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+}
+
+/* Dashboard Sidebar Mobile */
+@media (max-width: 768px) {
+  /* Stack sidebar and content vertically */
+  div[style*="display:'flex'"] {
+    flex-direction: column !important;
+  }
+
+  /* Sidebar full width on mobile */
+  div[style*="width:'260px'"] {
+    width: 100% !important;
+    min-height: auto !important;
+    position: relative !important;
+  }
+
+  /* Main content full width */
+  div[style*="flex:1"][style*="padding:'30px 40px'"] {
+    padding: 20px 15px !important;
+  }
+}
+
+/* Cards Mobile */
+@media (max-width: 576px) {
+  .product-card {
+    width: 100% !important;
+  }
+
+  .cards-container {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .stats-section {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .section-title {
+    font-size: 28px !important;
+  }
+}
+
+/* Analytics Mobile */
+@media (max-width: 768px) {
+  .recharts-wrapper {
+    width: 100% !important;
+  }
+}
+
+/* Footer Mobile */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column !important;
+    padding: 30px 20px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 15px 20px !important;
+  }
+}
+
+/* Contact Form Mobile */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* General Mobile Fixes */
+@media (max-width: 576px) {
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
 }
