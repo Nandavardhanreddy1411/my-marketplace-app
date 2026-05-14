@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 
 import Navbar from "./components/Navbar";
@@ -28,7 +28,7 @@ import Analytics from "./pages/Analytics";
 
 function App() {
   return (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+    <HashRouter>
       <Navbar logo="PIXER" />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -42,19 +42,18 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/product-details" element={<ProductDetails />} />
+        <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/otp-verification" element={<OTPVerification />} />
         <Route path="/email-verification" element={<EmailVerification />} />
         <Route path="/vendor-dashboard" element={<VendorDashboard />} />
         <Route path="/analytics" element={<Analytics />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer company="Pixer Marketplace" />
 
-      {/* Toast Notifications */}
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -64,7 +63,7 @@ function App() {
         pauseOnHover
       />
 
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
