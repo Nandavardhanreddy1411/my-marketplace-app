@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/my-marketplace-app/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pixer – Digital Marketplace</title>
 
@@ -16,8 +16,20 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" crossorigin src="/assets/index-DttwgQqP.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-2ebcDYA9.css">
+  <script type="text/javascript">
+  (function(l) {
+    if (l.search[1] === '/' ) {
+      var decoded = l.search.slice(1).split('&').map(function(s) {
+        return s.replace(/~and~/g, '&')
+      }).join('?');
+      window.history.replaceState(null, null,
+        l.pathname.slice(0, -1) + decoded + l.hash
+      );
+    }
+  }(window.location))
+</script>
+  <script type="module" crossorigin src="/my-marketplace-app/assets/index-DttwgQqP.js"></script>
+  <link rel="stylesheet" crossorigin href="/my-marketplace-app/assets/index-2ebcDYA9.css">
 </head>
 
 
