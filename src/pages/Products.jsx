@@ -94,7 +94,7 @@ function PreviewModal({ product, onClose }) {
         {/* Action Buttons */}
         <div style={{ display:'flex', gap:'12px' }}>
           <button
-            onClick={() => window.location.href=`/product-details/${product.id}`}
+            onClick={() => window.location.href=`#/product-details/${product.id}`}
             style={{
               flex:1, padding:'13px', background:'#4F46E5',
               color:'white', border:'none', borderRadius:'10px',
@@ -103,7 +103,7 @@ function PreviewModal({ product, onClose }) {
             🛒 Buy Now — ₹{product.price.toLocaleString('en-IN')}
           </button>
           <button
-            onClick={() => window.location.href=`/product-details/${product.id}`}
+            onClick={() => window.location.href=`#/product-details/${product.id}`}
             style={{
               padding:'13px 20px', background:'transparent',
               color:'#4F46E5', border:'2px solid #4F46E5',
@@ -416,7 +416,7 @@ function Products() {
                               fontFamily:'Poppins'
                             }}>👁️</button>
                           <button
-                            onClick={() => window.location.href=`/product-details/${product.id}`}
+                            onClick={() => window.location.href=`#/product-details/${product.id}`}
                             style={{
                               background:'transparent', color:'#4F46E5',
                               border:'1.5px solid #4F46E5', padding:'7px 10px',
@@ -425,7 +425,7 @@ function Products() {
                               fontFamily:'Poppins'
                             }}>Details</button>
                           <button
-                            onClick={() => window.location.href=`/product-details/${product.id}`}
+                            onClick={() => window.location.href=`#/product-details/${product.id}`}
                             style={{
                               background:'#4F46E5', color:'white',
                               border:'none', padding:'7px 12px',
