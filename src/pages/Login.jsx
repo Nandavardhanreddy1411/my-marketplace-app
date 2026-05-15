@@ -14,11 +14,11 @@ function Login() {
         .min(6, '❌ Minimum 6 characters required')
         .required('❌ Password is required')
     }),
-    onSubmit: (values) => {
+        onSubmit: (values) => {
       localStorage.setItem('userEmail', values.email);
       localStorage.setItem('isLoggedIn', 'true');
       toast.success(`✅ Login Successful! Welcome back!`);
-      setTimeout(() => { window.location.href = '/'; }, 2000);
+      setTimeout(() => { window.location.href = '#/'; }, 2000);
     }
   });
 

@@ -19,12 +19,12 @@ function Register() {
         .required('❌ Please confirm your password'),
       terms: Yup.bool().oneOf([true],'❌ You must accept the terms')
     }),
-        onSubmit: (values) => {
+          onSubmit: (values) => {
       localStorage.setItem('userName', values.firstName);
       localStorage.setItem('userEmail', values.email);
       localStorage.setItem('userRole', values.role);
-      toast.success(`🎉 Account Created! Check your email for OTP!`);
-      setTimeout(() => { window.location.href = '/otp-verification'; }, 2000);
+      toast.success(`🎉 Account Created! Welcome ${values.firstName}!`);
+      setTimeout(() => { window.location.href = '#/email-verification'; }, 2000);
     }
   });
 
