@@ -1,8 +1,7 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { Suspense, lazy } from 'react';
-import { AppProvider } from "./context/CartContext";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -30,9 +29,11 @@ const Payment = lazy(() => import("./pages/Payment"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const VendorDashboard = lazy(() => import("./pages/VendorDashboard"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
-const Notifications = lazy(() => import("./pages/Notifications"));
 const Analytics = lazy(() => import("./pages/Analytics"));
+const Notifications = lazy(() => import("./pages/Notifications"));
 const APIDemo = lazy(() => import("./pages/APIDemo"));
+const StateDemo = lazy(() => import("./pages/StateDemo"));
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
 
 function PageLoader() {
   return (
@@ -62,51 +63,56 @@ function PageLoader() {
 
 function App() {
   return (
-    <AppProvider>
-      <BrowserRouter>
-        <Suspense fallback={<PageLoader />}>
-          <Navbar logo="PIXER" />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog-details" element={<BlogDetails />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/otp-verification" element={<OTPVerification />} />
-            <Route path="/email-verification" element={<EmailVerification />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/product-details/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/api-demo" element={<APIDemo />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <Footer company="Pixer Marketplace" />
-        </Suspense>
+    <HashRouter>
+      <Suspense fallback={<PageLoader />}>
+        <Navbar logo="PIXER" />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog-details" element={<BlogDetails />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/otp-verification" element={<OTPVerification />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product-details/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/api-demo" element={<APIDemo />} />
+          <Route path="/state-demo" element={<StateDemo />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute><Dashboard /></ProtectedRoute>
+          } />
+          <Route path="/vendor-dashboard" element={
+            <ProtectedRoute><VendorDashboard /></ProtectedRoute>
+          } />
+          <Route path="/admin" element={
+            <ProtectedRoute><AdminDashboard /></ProtectedRoute>
+          } />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer company="Pixer Marketplace" />
+      </Suspense>
 
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          pauseOnHover
-        />
-      </BrowserRouter>
-    </AppProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+      />
+    </HashRouter>
   );
 }
 
