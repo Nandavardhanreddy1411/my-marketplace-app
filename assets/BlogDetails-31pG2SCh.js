@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BE_tW6Ee.js";var t=e();function n(){return(0,t.jsx)(`div`,{className:`page-section`,children:(0,t.jsx)(`h1`,{children:`Blog Details Page`})})}export{n as default};
