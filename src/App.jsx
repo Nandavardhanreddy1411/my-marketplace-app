@@ -33,7 +33,7 @@ const Analytics = lazy(() => import("./pages/Analytics"));
 const Notifications = lazy(() => import("./pages/Notifications"));
 const APIDemo = lazy(() => import("./pages/APIDemo"));
 const StateDemo = lazy(() => import("./pages/StateDemo"));
-const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function PageLoader() {
   return (
