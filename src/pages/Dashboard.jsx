@@ -5,6 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, Legend
 } from 'recharts';
+import SEO from '../components/SEO';
 
 const spendingData = [
   { month: 'Jan', spent: 1200 },
@@ -90,7 +91,10 @@ function Dashboard() {
 
   return (
     <div style={{ background:'#F8FAFC', minHeight:'100vh', display:'flex' }}>
-
+       <SEO
+        title="Dashboard"
+        description="Manage your orders, downloads and profile on Pixer."
+        />
       {/* SIDEBAR */}
             <div style={{
             width: window.innerWidth <= 768 ? '100%' : '260px',

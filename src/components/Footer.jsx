@@ -22,8 +22,16 @@ function Footer(props) {
             Privacy
           </Link>
 
+           <Link to="/Contact">
+            Contact
+          </Link>
+
           <Link to="/blog">
             Blog
+          </Link>
+          
+          <Link to="/Products">
+            Products
           </Link>
 
         </div>

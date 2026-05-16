@@ -1,69 +1,112 @@
 import "./App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
+import { Suspense, lazy } from 'react';
+import { AppProvider } from "./context/CartContext";
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+const Navbar = lazy(() => import("./components/Navbar"));
+const Footer = lazy(() => import("./components/Footer"));
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Pricing from "./pages/Pricing";
-import FAQ from "./pages/FAQ";
-import Blog from "./pages/Blog";
-import BlogDetails from "./pages/BlogDetails";
-import Terms from "./pages/Terms";
-import Privacy from "./pages/Privacy";
-import NotFound from "./pages/NotFound";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Products from "./pages/Products";
-import ProductDetails from "./pages/ProductDetails";
-import Dashboard from "./pages/Dashboard";
-import ForgotPassword from "./pages/ForgotPassword";
-import OTPVerification from "./pages/OTPVerification";
-import EmailVerification from "./pages/EmailVerification";
-import VendorDashboard from "./pages/VendorDashboard";
-import Analytics from "./pages/Analytics";
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetails = lazy(() => import("./pages/BlogDetails"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
+const OTPVerification = lazy(() => import("./pages/OTPVerification"));
+const EmailVerification = lazy(() => import("./pages/EmailVerification"));
+const Products = lazy(() => import("./pages/Products"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Payment = lazy(() => import("./pages/Payment"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const VendorDashboard = lazy(() => import("./pages/VendorDashboard"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const Notifications = lazy(() => import("./pages/Notifications"));
+const Analytics = lazy(() => import("./pages/Analytics"));
+const APIDemo = lazy(() => import("./pages/APIDemo"));
+
+function PageLoader() {
+  return (
+    <div style={{
+      minHeight:'60vh', display:'flex',
+      alignItems:'center', justifyContent:'center',
+      flexDirection:'column', gap:'15px'
+    }}>
+      <div style={{
+        width:'50px', height:'50px', borderRadius:'50%',
+        border:'4px solid #EEF2FF',
+        borderTop:'4px solid #4F46E5',
+        animation:'spin 0.8s linear infinite'
+      }}></div>
+      <p style={{ color:'#888', fontFamily:'Poppins', fontSize:'0.9rem', margin:0 }}>
+        Loading...
+      </p>
+      <style>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <HashRouter>
-      <Navbar logo="PIXER" />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog-details" element={<BlogDetails />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product-details/:id" element={<ProductDetails />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/otp-verification" element={<OTPVerification />} />
-        <Route path="/email-verification" element={<EmailVerification />} />
-        <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer company="Pixer Marketplace" />
+    <AppProvider>
+      <BrowserRouter>
+        <Suspense fallback={<PageLoader />}>
+          <Navbar logo="PIXER" />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog-details" element={<BlogDetails />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/otp-verification" element={<OTPVerification />} />
+            <Route path="/email-verification" element={<EmailVerification />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product-details/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/api-demo" element={<APIDemo />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer company="Pixer Marketplace" />
+        </Suspense>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-      />
-
-    </HashRouter>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+        />
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 

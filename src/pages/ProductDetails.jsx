@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart, useWishlist } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
 const allProducts = [
   { id:1, title:'React Admin Dashboard', category:'Template', price:2099, originalPrice:4099, rating:4.8, reviews:120, sales:850, badge:'Bestseller', vendor:'David Smith', vendorAvatar:'https://randomuser.me/api/portraits/men/32.jpg', description:'A fully responsive React Admin Dashboard template built with React JS, Bootstrap 5, and modern UI components. Perfect for SaaS applications, analytics platforms, and admin panels.', features:['✅ Fully Responsive Design','✅ React JS + Bootstrap 5','✅ 20+ Reusable Components','✅ Charts & Analytics UI','✅ Dark & Light Mode','✅ Clean Code & Documentation','✅ Lifetime Updates','✅ Free Support'], tags:['React','Dashboard','Admin','Bootstrap','Template'], images:['https://images.unsplash.com/photo-1461749280684-dccba630e2f6','https://images.unsplash.com/photo-1516321318423-f06f85e504b3','https://images.unsplash.com/photo-1518770660439-4636190af475','https://images.unsplash.com/photo-1507238691740-187a5b1d37b8'], reviews_list:[{name:'John Miller',avatar:'https://randomuser.me/api/portraits/men/12.jpg',rating:5,comment:'Excellent template! Saved me weeks of work.',date:'May 2025'},{name:'Sophia Lee',avatar:'https://randomuser.me/api/portraits/women/44.jpg',rating:5,comment:'Very clean code and easy to customize.',date:'Apr 2025'},{name:'Alex Brown',avatar:'https://randomuser.me/api/portraits/men/22.jpg',rating:4,comment:'Great product. Documentation could be better.',date:'Mar 2025'}] },
@@ -15,6 +17,8 @@ const allProducts = [
 
 function ProductDetails() {
 
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { id } = useParams();
   const product = allProducts.find(p => p.id === Number(id)) || allProducts[0];
   const relatedProducts = allProducts.filter(p => p.id !== product.id && p.category === product.category).slice(0,3).length > 0
@@ -26,6 +30,35 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
 
   const renderStars = (rating) => '⭐'.repeat(Math.floor(rating));
+
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addToCart({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.images[0],
+        category: product.category,
+      });
+    }
+    toast.success(`✅ ${product.title} added to cart!`);
+  };
+
+  const handleWishlist = () => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+      toast.info('Removed from wishlist');
+    } else {
+      addToWishlist({
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.images[0],
+        category: product.category,
+      });
+      toast.success('❤️ Added to wishlist!');
+    }
+  };
 
   return (
     <div style={{background:'#F8FAFC', minHeight:'100vh', paddingBottom:'60px'}}>
@@ -122,10 +155,23 @@ function ProductDetails() {
               </div>
             </div>
 
+            {/* Action Buttons — connected to Context */}
             <div style={{display:'flex', gap:'15px', marginBottom:'25px'}}>
-              <button style={{flex:1, padding:'15px', background:'#4F46E5', color:'white', border:'none', borderRadius:'12px', fontWeight:'700', fontSize:'1rem', cursor:'pointer', fontFamily:'Poppins'}}>🛒 Add to Cart</button>
-              <button style={{flex:1, padding:'15px', background:'#F59E0B', color:'white', border:'none', borderRadius:'12px', fontWeight:'700', fontSize:'1rem', cursor:'pointer', fontFamily:'Poppins'}}>⚡ Buy Now</button>
-              <button style={{padding:'15px 18px', background:'white', color:'#ef4444', border:'1.5px solid #ef4444', borderRadius:'12px', fontSize:'1.2rem', cursor:'pointer'}}>♥</button>
+              <button
+                onClick={handleAddToCart}
+                style={{flex:1, padding:'15px', background:'#4F46E5', color:'white', border:'none', borderRadius:'12px', fontWeight:'700', fontSize:'1rem', cursor:'pointer', fontFamily:'Poppins'}}>
+                🛒 Add to Cart
+              </button>
+              <button
+                onClick={() => { handleAddToCart(); window.location.href='#/state-demo'; }}
+                style={{flex:1, padding:'15px', background:'#F59E0B', color:'white', border:'none', borderRadius:'12px', fontWeight:'700', fontSize:'1rem', cursor:'pointer', fontFamily:'Poppins'}}>
+                ⚡ Buy Now
+              </button>
+              <button
+                onClick={handleWishlist}
+                style={{padding:'15px 18px', background: isInWishlist(product.id) ? '#FEF2F2' : 'white', color:'#ef4444', border:'1.5px solid #ef4444', borderRadius:'12px', fontSize:'1.2rem', cursor:'pointer', transition:'all 0.3s'}}>
+                {isInWishlist(product.id) ? '❤️' : '♥'}
+              </button>
             </div>
 
             <div style={{display:'flex', gap:'8px', flexWrap:'wrap'}}>

@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import SEO from '../components/SEO';
 
 function Register() {
 
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       firstName:'', lastName:'', email:'',
@@ -24,7 +27,7 @@ function Register() {
       localStorage.setItem('userEmail', values.email);
       localStorage.setItem('userRole', values.role);
       toast.success(`🎉 Account Created! Welcome ${values.firstName}!`);
-      setTimeout(() => { window.location.href = '#/email-verification'; }, 2000);
+      setTimeout(() => { navigate('/login'); }, 1500);
     }
   });
 
@@ -62,6 +65,10 @@ function Register() {
       display:'flex', alignItems:'center',
       justifyContent:'center', padding:'40px 20px'
     }}>
+       <SEO
+      title="Register"
+      description="Create your Pixer account and start buying or selling digital products."
+    />
       <div style={{
         background:'white', borderRadius:'20px',
         padding:'50px 40px', width:'100%',
